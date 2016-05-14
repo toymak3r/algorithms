@@ -1,4 +1,12 @@
+#!/usr/bin/python
 from time import *
+import sys
+
+
+PYTHON_VERSION = 3
+if int(sys.version.split()[0][:1]) < PYTHON_VERSION:
+    print("Python %s or later is required\n" % PYTHON_VERSION)
+    sys.exit(1)
 
 text = """
 Early sales of Apple's new iPhones have lived up to high expectations.
