@@ -1,52 +1,68 @@
 # bubble sort
 from random import randint
 import time
+import unittest
+
 
 class BubbleSort:
 
-    MAX_RANGE_INT=10000000
+    MAX_RANGE_INT = 0  # define style
 
-    def sort(self, numbers):
+    def __init__(self, max_range_int=10000000):
+        self.MAX_RANGE_INT = max_range_int
+
+    def sort(self, numbers) -> list:
         changed = True
         while changed:
             changed = False
-            for x in range(len(numbers)-1,0, -1):
+            for x in range(len(numbers)-1, 0, -1):
                 temp = numbers[x]
                 if numbers[x] < numbers[x-1]:
                     numbers[x] = numbers[x-1]
                     numbers[x-1] = temp
                     changed = True
-            
+
         return numbers
-    
-    def test(self, n_tests, n_elements):
-        for x in range(1,n_tests):
-            numbers = [randint(1,randint(1,self.MAX_RANGE_INT)) 
-                        for _ in range(n_elements)]
-            sorted_numbers = numbers
-            sorted_numbers.sort()
-            result = self.sort(numbers)
-            
-            if result == sorted_numbers:
-                result_test = "OK"
-            else:
-                result_test = "NOK"
-
-            print("teste {} : {}".format(x,result_test))
-            print("sorted by sort(): {}".format(sorted_numbers))
-            print("sorted by function: {}".format(result))
 
 
-print("Using Own BubbleSort Function: \n")
-numbers = [2,3,10,40,4,1,20]
-b = BubbleSort()
-start_time = time.time()
-print(b.sort(numbers))
-print("--- %s seconds ---" % (time.time() - start_time)+"\n")
+class BubbleSortTest(unittest.TestCase):
+    bs = BubbleSort()
+    n_tests = 10
+    n_elements = 10
+    numbers = []
 
-print("Using Sort() Python Function: \n")
-numbers = [2,3,10,40,4,1,20]
-start_time = time.time()
-numbers.sort()
-print(numbers)
-print("--- %s seconds ---" % (time.time() - start_time)+"\n")
+    def setUp(self):
+        self.set_rand_numbers()
+
+    def setDown(self):
+        self.numbers = []
+
+    def set_rand_numbers(self):
+        self.numbers = [randint(1, randint(1, self.bs.MAX_RANGE_INT))
+                        for _ in range(self.n_elements)]
+
+    def test(self):
+        sorted_numbers = self.numbers
+        sorted_numbers.sort()
+        result = self.bs.sort(self.numbers)
+
+        print("List Numbers to be used: {}".format(self.numbers))
+        print("sorted by sort() python: {}".format(sorted_numbers))
+        print("sorted by function: {}".format(result))
+        self.assertEqual(self.bs.sort(self.numbers), sorted_numbers)
+
+    @staticmethod
+    def performance():
+        print("Using Own BubbleSort Function: \n")
+        numbers = [2, 3, 10, 40, 4, 1, 20]
+        b = BubbleSort()
+        start_time = time.time()
+        print(b.sort(numbers))
+        print("--- %s seconds ---" % (time.time() - start_time)+"\n")
+
+        print("Using Sort() Python Function: \n")
+        numbers = [2, 3, 10, 40, 4, 1, 20]
+        start_time = time.time()
+        numbers.sort()
+        print(numbers)
+        print("--- %s seconds ---" % (time.time() - start_time)+"\n")
