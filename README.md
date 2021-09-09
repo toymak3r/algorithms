@@ -1,3 +1,9 @@
-[![Code Climate](https://codeclimate.com/github/toymak3r/python_samples/badges/gpa.svg)](https://codeclimate.com/github/toymak3r/python_samples)
-[![Test Coverage](https://codeclimate.com/github/toymak3r/python_samples/badges/coverage.svg)](https://codeclimate.com/github/toymak3r/python_samples/coverage)
-[![Issue Count](https://codeclimate.com/github/toymak3r/python_samples/badges/issue_count.svg)](https://codeclimate.com/github/toymak3r/python_samples)
+# Algorithm study
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/a976612923d93ce6f934/maintainability)](https://codeclimate.com/github/toymak3r/algorithms/maintainability)[![Test Coverage](https://api.codeclimate.com/v1/badges/a976612923d93ce6f934/test_coverage)](https://codeclimate.com/github/toymak3r/algorithms/test_coverage)
+
+## Samples on:
+
+- python
+- c/c++ 
+
